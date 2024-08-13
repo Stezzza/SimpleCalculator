@@ -22,7 +22,7 @@ namespace Console_Calculator
 
                 while (!validOperation)
                 {
-                    Console.WriteLine("Pick the Function: A (Add), S (Subtract), M (Multiply), D (Divide)");
+                    Console.WriteLine("Pick the Function: \nA (Add), \nS (Subtract), \nM (Multiply), \nD (Divide)");
 
                     // Capture the key press once
                     var key = Console.ReadKey().Key;
