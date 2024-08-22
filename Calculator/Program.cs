@@ -17,8 +17,7 @@ namespace Console_Calculator
                 Console.WriteLine("Welcome to calculator");
                 Console.WriteLine("========\n");
 
-                Console.WriteLine("Pick number one");
-                int number1 = Convert.ToInt32(Console.ReadLine());
+                int number1 = GetValidNumber("Pick number one");
 
                 while (!validOperation)
                 {
@@ -53,13 +52,12 @@ namespace Console_Calculator
                     }
                 }
 
-                Console.WriteLine("\nEnter number 2");
-                int number2 = Convert.ToInt32(Console.ReadLine());
+                int number2 = GetValidNumber("Enter number two");
 
                 Console.WriteLine("Press spacebar to solve");
                 if ((number1 == 0 && number2 == 0) && (divide || multiply))
                 {
-                    Console.WriteLine("cannot multiply or divide zero by zero");
+                    Console.WriteLine("Cannot multiply or divide zero by zero");
                     return;
                 }
 
@@ -94,6 +92,28 @@ namespace Console_Calculator
                     playAgain = false;
                 }
             }
+        }
+
+        // Method to get a valid number from the user
+        static int GetValidNumber(string prompt)
+        {
+            int number;
+            bool isValid;
+
+            do
+            {
+                Console.WriteLine(prompt);
+                string input = Console.ReadLine();
+                isValid = int.TryParse(input, out number);
+
+                if (!isValid)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+
+            } while (!isValid);
+
+            return number;
         }
     }
 }
